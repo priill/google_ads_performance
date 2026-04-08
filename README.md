@@ -2,9 +2,12 @@
 
 ## Overview
 
-Analysis of a simulated Google Ads campaign promoting a data analytics course, covering November 2024. The dataset was intentionally raw and uncleaned, closely mimicking real ad platform exports.
+Analysis of a simulated Google Ads campaign promoting a data analytics course, covering November 2024 (from Kaggle).
 
 **Goal:** Analyse the Google Ads campaign performance and give business recommendations based on insights
+
+In this project, I demonstrated the cleaning and exploratory data analysis (EDA) in Python. An A/B Test design plan is also provided as a response for the insights provided in the previous analysis. 
+
 
 ### Dataset
 
@@ -31,7 +34,8 @@ Analysis of a simulated Google Ads campaign promoting a data analytics course, c
 ## What I Did
 
 **Data cleaning** (`cleaning.ipynb`)
-- Standardised categorical inconsistencies in `campaign_name`, `location`, and `device` using fuzzy matching (`thefuzz`)
+- Standardised inconsistencies in `location`, and `device` using fuzzy matching (`thefuzz`)
+- Standardised the `campaign_names` after finding out that there are no meaningful difference between them (the ad_date, conversion_rate, and cost are basically identical).
 - Parsed 3 inconsistent date formats (`YYYY-MM-DD`, `DD-MM-YYYY`, `YYYY/MM/DD`) into a unified datetime column
 - Decomposed composite columns `cost` and `sale_amount` (e.g. `$231.88`) into numeric values
 - Dropped the original `conversion_rate` column and recalculated it consistently as `conversions / clicks`
@@ -64,7 +68,8 @@ Analysis of a simulated Google Ads campaign promoting a data analytics course, c
 
 - **CTR is flat (~3.1–3.4%)** with no meaningful day-of-week variation, suggesting the marketing efforts are consistent but could be optimised
 - **CVR is more volatile (4.5–5.5%)** — the bottleneck is at the top of the funnel (impressions → clicks), not the landing page
-- **"Learn Data Analytics"** keyword has the highest CVR (5.14%) while **"Data Analitics Online"** has the lowest (4.86%) despite comparable impressions
+
+- **"Learn Data Analytics"** keyword has the highest CVR (5.14%). With **data analytics training** and **online data analytic**, it is the keywords that are above the overal CVR. **"Data Analitics Online"** is the lowest (4.86%) despite comparable impressions
 
 <img width="1182" height="784" alt="image" src="https://github.com/user-attachments/assets/77b14ac3-e676-4f9d-af9b-acb17957937f" />
 
